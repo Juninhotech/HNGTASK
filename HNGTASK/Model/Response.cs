@@ -1,6 +1,6 @@
 ﻿namespace HNGTASK.Model
 {
-    public class DataResponse
+    public class Response
     {
         public string client_ip { get; set; }
         public string location { get; set; }

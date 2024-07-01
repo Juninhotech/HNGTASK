@@ -10,12 +10,12 @@ namespace HNGTASK.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HelloController : ControllerBase
+    public class helloController : ControllerBase
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly string _openWeatherApiKey;
 
-        public HelloController(IOptions<OpenWeatherOption> openWeatherOptions, IHttpClientFactory httpClientFactory)
+        public helloController(IOptions<OpenWeatherOption> openWeatherOptions, IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
             _openWeatherApiKey = openWeatherOptions.Value.ApiKey;
@@ -24,9 +24,9 @@ namespace HNGTASK.Controllers
 
 
         [HttpGet]
-        public async Task<DataResponse> Get([FromQuery] string visitors_Name)
+        public async Task<Response> Get([FromQuery] string visitors_name)
         {
-            DataResponse response = new DataResponse();
+            Response response = new Response();
             try
             {
                 
@@ -58,7 +58,7 @@ namespace HNGTASK.Controllers
 
                 response.client_ip = clientIp;
                 response.location = location;
-                response.greeting = $"Hello, {visitors_Name}!, the temperature is {temperature} degree Celcius in {response.location}";
+                response.greeting = $"Hello, {visitors_name}!, the temperature is {temperature} degrees Celcius in {response.location}";
             }
             catch (Exception)
             {
